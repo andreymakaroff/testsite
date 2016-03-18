@@ -1,0 +1,1198 @@
+@import "compass/css3";
+@import "compass/css3/selection";
+@import "reset.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+@import "slick.scss";
+@import "slick-theme.scss";
+//@import "modals.scss";
+$red: #c51335;
+$blue: #2fceca;
+$darkgrey:#2e2e2e;
+body{
+  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+  font-size: 14px;
+}
+.wrapper {
+  @extend %wrapper;
+}
+.inner {
+  @extend %inner;
+}
+.header {
+  height: 90px;
+  text-align: center;
+  padding-top:15px;
+  &__wrapper{
+    height: 90px;
+    @include box-shadow(0 0 10px 10px rgba(#000, .3));
+    z-index: 1;
+    opacity: .9999;
+  }
+  &__logo {
+    display: inline-block;
+    width: 220px;
+    text-align: center;
+    margin-top: -9px;
+  }
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $blue;
+    font-size:20px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__phone {
+    float: right;
+    width: 200px;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  &__buttonbox{
+    float: left;
+    width: 155px;
+    text-align: center;
+    font-size: 12px;
+    &__button {
+      width: 150px;
+      border: 2px solid $blue;
+      border-radius: 5px;
+      color: $darkgrey;
+      margin: 2px auto;
+      height: 35px;
+      font-size: 18px;
+      line-height: 35px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      @include transition(all .2s ease-out);
+      @include selection(transparent, #e1362f);
+      &:after {
+        content: "";
+        display: block;
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: $blue;
+        top: -100%;
+        left: 0;
+        @include transition(top .2s ease-out);
+      }
+      &:hover {
+        color: #fff;
+        @include selection(transparent, #fff);
+        &:after {
+          top: 0;
+        }
+      }
+      &:active {
+        &:after {
+          @include box-shadow(0 0 15px 0  darken($blue, 20%) inset);
+        }
+      }
+    }
+  }
+}
+
+.scr-i {
+  position: relative;
+  height: inherit;
+  &__wrapper {
+    height: 515px;
+    background: url('../img/back3.jpg') top center no-repeat;
+    background-size: cover;
+  }
+  &__image {
+    position: absolute;
+    top: 50px;
+    left: -122px;
+  }
+  &__title {
+    display: block;
+    width: 500px;
+    float: left;
+    font-size: 42px;
+    color: #fff;
+    line-height: 50px;
+    margin-top: 55px;
+  }
+  &__subtitle {
+    display: block;
+    width: 500px;
+    float: left;
+    font-size: 24px;
+    color: #fff;
+    line-height: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    p{
+      color: $blue;
+    }
+  }
+  &__form-wrapper {
+    width: 395px;
+    height: 280px;
+    float: right;
+    margin-top: -100px;
+    z-index: 1;
+    opacity: .9999;
+  }
+  &__form-content {
+    background: rgba(#e6edf6,.7);
+    height: inherit;
+    float: left;
+  }
+  &__form-title {
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 18px 0;
+    color: $darkgrey;
+    line-height: 35px;
+  }
+  &__descr {
+    color: $darkgrey;
+    text-align: center;
+    margin-top: 5px;
+  }
+  &__input-wrapper {
+    margin:19px 35px 0;
+    position: relative;
+    label.error{
+      position: absolute;
+      bottom: -14px;
+      font-size: 12px;
+      left: 18px;
+      color: $red;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    font-size:16px;
+    color: #000;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    padding: 18px 15px;
+    border: 2px solid rgba($blue, .5);
+    @include transition(all .2s ease-out);
+    @include input-placeholder {
+      color: rgba(#000, .5);
+    }
+    &:focus {
+      @include box-shadow(0 0 4px rgba(#000, .4));
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid $blue;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .2s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      border-bottom: 2px solid #21acb1;
+      top: 0;
+      left: 0;
+      @include transition(all .2s ease-out);
+    }
+    &:before {
+      content: attr(data-content);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      line-height: 38px;
+    }
+    &:hover {
+      color: $blue;
+      &:after {
+        top: 100%;
+      }
+    }
+    &:active {
+      @include box-shadow(0 0 10px 0 rgba(darken($blue, 10%), .8) inset);
+    }
+  }
+  &__fichesBox{
+    float: left;
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    -o-transform: skew(-20deg);
+    background: $darkgrey;
+    padding: 0 35px;
+    margin-left: -50px;
+    .item{
+      float: right;
+      width: 85px;
+      margin: 25px 30px;
+      -webkit-transform: skew(20deg);
+      -moz-transform: skew(20deg);
+      -o-transform: skew(20deg);
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      color:#fff;
+      div{
+        text-align: center;
+      }
+      svg{
+        width:65px;
+        fill: #fff;
+      }
+      &:hover{
+        color: $blue;
+        svg{
+          fill: $blue;
+        }
+      }
+    }
+  }
+}
+
+.scr-iii {
+  &__wrapper {
+    //height: 525px;
+  }
+  &__inner {
+    height: inherit;
+  }
+  &__title {
+    display: block;
+    padding-top: 70px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: $darkgrey;
+  }
+  &__form {
+    background: rgba(#f3153f, .7);
+    width: 240px;
+    padding-bottom: 15px;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    color: #fff;
+    text-align: center;
+  }
+  &__titleform {
+    margin: 10px auto;
+    font-size: 20px;
+  }
+  &__input-wrapper {
+    padding: 10px 20px;
+    position: relative;
+    label.error {
+      position: absolute;
+      bottom: -3px;
+      font-size: 12px;
+      left: 26px;
+      color: #fff;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    background: transparent;
+    color: #fff;
+    height: 40px;
+    line-height: 38px;
+    padding: 18px 15px;
+    border: 2px solid #fff;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+    &::-moz-placeholder {
+      color: #fff;
+    }
+    /* Firefox 19+ */
+    &:-moz-placeholder {
+      color: #fff;
+    }
+    /* Firefox 18- */
+    &:-ms-input-placeholder {
+      color: #fff;
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid $blue;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .2s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      border-bottom: 2px solid #21acb1;
+      top: 0;
+      left: 0;
+      @include transition(all .2s ease-out);
+    }
+    &:before {
+      content: attr(data-content);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      line-height: 38px;
+    }
+    &:hover {
+      color: #fff;
+      &:after {
+        top: 100%;
+      }
+    }
+    &:active {
+      @include box-shadow(0 0 10px 0 rgba(darken($red, 10%), .8) inset);
+    }
+  }
+  &__descr {
+    display: none;
+    span {
+      background: url("../img/like.png") no-repeat center;
+      width: 22px;
+      height: 22px;
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+  &__moreButton{
+    @extend .header__buttonbox__button;
+    width: 200px;
+    margin-top: 40px;
+  }
+}
+.tabs {
+  position: relative;
+  margin-top: 40px;
+}
+.tabs-nav {
+  width:  100%;
+  margin: 0 auto;
+  @include clearfix;
+  z-index: 1;
+  background: #fff;
+  ul{
+    font-size: 0;
+  }
+  :after{
+    width: 100%;
+    height: 3px;
+    content: '';
+    display: block;
+    background: $blue;
+    position: relative;
+    bottom: 5px;
+  }
+  &__item {
+    display: inline-block;
+    width: 33.333%;
+    height: 40px;
+    font-size: 22px;
+    line-height: 38px;
+    color: $darkgrey;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .1s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      border-bottom: 2px solid #21acb1;
+      bottom: -100%;
+      left: 0;
+      @include transition(all .1s ease-out);
+    }
+    &:hover:after {
+      bottom: -86%;
+      border-radius: 4px;
+    }
+  }
+  &__item.active{
+      background: $blue;
+      color: #fff;
+  }
+}
+.tabs-content {
+  position: relative;
+  width: 100%;
+  margin-top: -5px;
+  &__item {
+    @include clearfix;
+    display: none;
+    height: 500px;
+    &.active {
+      display: block;
+    }
+  }
+}
+.tab {
+  @include clearfix;
+}
+.owl-img.owl-carousel{
+  //.lazyOwl{
+  //  width: 100%;
+  //}
+  .item{
+    overflow: hidden;
+    img{
+      margin:-50px 0;
+    }
+  }
+}
+.owl-img-preview{
+  width: 80% !important;
+  margin: -112px auto 0 auto;
+  background: rgba(#000,.5);
+  box-shadow: 0 0 5px rgba(#000,.5);
+  img{
+    width: 100px;
+    margin: 0 auto;
+    cursor: pointer;
+    max-width: 80px;
+    padding: 7px 0;
+  }
+  p{
+    display: block;
+    text-align: center;
+    font-weight:bold;
+    color: #fff;
+    padding-bottom: 5px;
+  }
+  .prev{
+    text-align: center;
+  }
+}
+.owl-controls .owl-page, .owl-controls .owl-buttons div{
+  background: url("../img/arrow-slim.png") no-repeat  ;
+  width:18px;
+  height: 32px;
+  position: absolute;
+  bottom:44px;
+  z-index: 5;
+  left: 60px;
+}
+.owl-next{
+  right: 60px;
+  left: auto !important;
+  @include transform(rotate(-180deg));
+}
+
+
+
+.scr-vi{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 4vw;
+    background: $blue;
+    background: linear-gradient(to bottom, #fff 0%, #fff 45%,$blue 50%, $blue 100%);
+  }
+  &__rotate{
+    margin: 7% -20% 0 -20%;
+    padding: 0 20%;
+    width: 140%;
+    @include transform(rotate(-4deg));
+    background: $blue;
+  }
+  &__inner{
+     @include transform(rotate(4deg));
+   }
+  &__title{
+    @extend .scr-iii__title;
+    color: #fff;
+    padding-bottom: 35px;
+  }
+  &__videoframe{
+    display: block;
+    margin: 0 auto 90px;
+  }
+}
+
+
+.scr-now{
+  &__wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 50px;
+    background: url("../img/bg-f.jpg") no-repeat center;
+    background-size: cover;
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 30px;
+    color: #fff;
+    padding-bottom: 5px;
+  }
+  &__subtitle{
+    @extend .scr-iii__title;
+    font-size: 22px;
+    padding-top: 0;
+    color: #fff;
+    padding-bottom: 35px;
+  }
+  &__box{
+    overflow: hidden;
+    width: 100%;
+    .col{
+      float: left;
+      width: 50%;
+      .scr-now__item:nth-child(2){
+        background: rgba($blue,.7);
+        p{
+          color: #fff;
+        }
+      }
+      .scr-now__item:nth-child(3){
+        background: rgba($darkgrey,.6);
+        span{
+          color: #fff;
+        }
+      }
+    }
+    .col2{
+      float: left;
+      width: 50%;
+      text-align: right;
+      .scr-now__item{
+        margin-left:auto;
+        margin-right: -30px;
+      }
+      .scr-now__item:nth-child(1){
+        background: rgba($darkgrey,.6);
+        span{
+          color: #fff;
+        }
+      }
+      .scr-now__item:nth-child(2){
+        background: rgba($blue,.7);
+        p{
+          color: #fff;
+        }
+      }
+      .scr-now__container-item{
+        padding-left:auto;
+        padding-right: 30px;
+      }
+    }
+  }
+  &__item{
+    width:  420px;
+    background: rgba(#fff,.8);
+    -webkit-transform: skew(-28deg);
+    -moz-transform: skew(-28deg);
+    -o-transform: skew(-28deg);
+    height: 110px;
+    padding:28px;
+    margin-left: -30px;
+    margin-bottom: 35px;
+  }
+  &__container-item{
+    -webkit-transform: skew(28deg);
+    -moz-transform: skew(28deg);
+    -o-transform: skew(28deg);
+    padding-left: 30px;
+    p{
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom:5px;
+      color: $blue;
+    }
+    span{
+      display: block;
+      font-size: 16px;
+    }
+  }
+}
+
+
+.scr-take-price{
+  &__wrapper{
+    width: 100%;
+    background: $blue;
+    overflow: hidden;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 25px;
+    color: $darkgrey;
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+  &__form{
+    width: 100%;
+  }
+  &__input-wrapper{
+    display: inline-block;
+    width:30%;
+    margin-top:30px;
+    position: relative;
+    vertical-align: top;
+    label.error{
+      color: #ff0000;
+      font-size: 12px;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    color: $darkgrey;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    background: rgba(#fff,.6);
+    border: 3px solid #fff;
+    border-radius: 3px;
+    outline: none;
+    padding: 18px 15px;
+    @include transition(all .2s ease-out);
+    @include input-placeholder {
+      color: $darkgrey;
+    }
+    &:focus {
+      @include box-shadow(0 0 4px rgba(#000, .4));
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: rgba($darkgrey,.7);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .2s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $darkgrey;
+      border-bottom: 2px solid $darkgrey;
+      top: 0;
+      left: 0;
+      @include transition(all .2s ease-out);
+    }
+    &:before {
+      content: attr(data-content);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      line-height: 36px;
+    }
+    &:hover {
+      color: #fff;
+      &:after {
+        top: 100%;
+      }
+    }
+    &:active {
+      @include box-shadow(0 0 10px 0 rgba(darken($darkgrey, 10%), .8) inset);
+    }
+  }
+}
+
+.scr-photo{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 40px;
+    .slider_synch_big{
+      width: 800px;
+      height: 500px;
+      margin: 15px auto;
+      .slick-next{
+        right: -40px;
+        top: 60%;
+        &:before{
+          background: url("../img/arrow.png") no-repeat center;
+          width: 43px;
+          height: 43px;
+          display: block;
+          @include rotate(180deg);
+          content: '';
+        }
+      }
+      .slick-prev{
+        top: 60%;
+        &:before{
+          background: url("../img/arrow.png") no-repeat center;
+          width: 43px;
+          height: 43px;
+          display: block;
+          content: '';
+        }
+      }
+    }
+    .slider_synch_small{
+      width: 814px;
+      height: 83px;
+      margin: 0 auto;
+      .slick-slide{
+        margin: 3px 7px;
+      }
+      .slick-current{
+        box-shadow: 0 0 0 3px $blue;
+      }
+    }
+  }
+  &__title{
+    @extend .scr-iii__title;
+    color: $darkgrey;
+    padding-bottom: 35px;
+  }
+}
+
+.scr-take-photo{
+  &__wrapper{
+    width: 100%;
+    background: url("../img/bg-photo.jpg") no-repeat top center;
+    background-size: cover;
+    overflow: hidden;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 25px;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+  &__img-post{
+    display: block;
+    width: 85%;
+    margin: 0 auto 35px;
+  }
+  &__form{
+    width: 100%;
+  }
+  &__input-wrapper{
+    display: inline-block;
+    width:30%;
+    margin-top:30px;
+    position: relative;
+    label.error{
+      color: #ff0000;
+      font-size: 12px;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    color: #fff;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    background: rgba(#000,.6);
+    border: none;
+    outline: none;
+    padding: 18px 15px;
+    @include transition(all .2s ease-out);
+    @include input-placeholder {
+      color: #fff;
+    }
+    &:focus {
+      @include box-shadow(0 0 4px rgba(#000, .4));
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid $blue;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .2s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      border-bottom: 2px solid #21acb1;
+      top: 0;
+      left: 0;
+      @include transition(all .2s ease-out);
+    }
+    &:before {
+      content: attr(data-content);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      line-height: 38px;
+    }
+    &:hover {
+      color: $blue;
+      &:after {
+        top: 100%;
+      }
+    }
+    &:active {
+      @include box-shadow(0 0 10px 0 rgba(darken($blue, 10%), .8) inset);
+    }
+  }
+}
+
+.scr-how-to{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 25px;
+    color: $darkgrey;
+    padding-bottom: 35px;
+  }
+  &__img-post{
+    display: block;
+    width: 85%;
+    margin: 0 auto 35px;
+  }
+  &__box{
+    width: 100%;
+  }
+  &__item{
+    width: 25%;
+    float: left;
+    line-height:18px;
+    text-align: center;
+    color: $darkgrey;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+
+
+.scr-new-post{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 4vw;
+  }
+  &__rotate{
+    margin: 7% -20% 0 -20%;
+    padding: 0 20%;
+    width: 140%;
+    @include transform(rotate(-4deg));
+    background: $blue;
+  }
+  &__inner{
+    @include transform(rotate(4deg));
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 25px;
+    color: $darkgrey;
+    padding-bottom: 35px;
+    span{
+      color: #fff;
+      font-size: 30px;
+    }
+  }
+  &__img-post{
+    display: block;
+    margin: 0 auto 90px;
+  }
+}
+
+
+.scr-reviews{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 70px;
+    .slider_reviews{
+      width: 660px;
+      margin: 15px auto;
+      .item{
+        .col1{
+          display: inline-block;
+          vertical-align: middle;
+          img{
+            width: 95px;
+            height: 95px;
+            border: 3px solid $blue;
+            padding: 3px;
+            border-radius: 50%;
+          }
+        }
+        .col2{
+          display: inline-block;
+          vertical-align: middle;
+          width: 550px;
+          padding-left:20px;
+          .name{
+            color: $blue;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+          }
+          .auto{
+            color: $darkgrey;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          .review{
+            color: $darkgrey;
+          }
+        }
+      }
+      .slick-next{
+        right: -40px;
+        top: 112px;
+        &:before{
+          background: url("../img/arrow.png") no-repeat center;
+          width: 43px;
+          height: 43px;
+          display: block;
+          @include rotate(180deg);
+          content: '';
+        }
+      }
+      .slick-prev{
+        top: 112px;
+        &:before{
+          background: url("../img/arrow.png") no-repeat center;
+          width: 43px;
+          height: 43px;
+          display: block;
+          content: '';
+        }
+      }
+    }
+  }
+  &__title{
+    @extend .scr-iii__title;
+    color: $darkgrey;
+    padding-bottom: 35px;
+    padding-top: 0;
+  }
+}
+
+
+
+.scr-last{
+  &__wrapper{
+    width: 100%;
+    overflow: hidden;
+    background: url("../img/bg-last.jpg") no-repeat center;
+    background-size: cover;
+    padding-bottom: 60px;
+    form{
+      width: 380px;
+      margin: 0 auto;
+      background: rgba(#fff,.85);
+      text-align: center;
+      padding-bottom: 20px;;
+    }
+  }
+  &__title{
+    @extend .scr-iii__title;
+    font-size: 25px;
+    color: #fff;
+    padding-bottom: 45px;
+  }
+
+  &__form-title {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: $darkgrey;
+    text-align: center;
+    padding: 20px 20px 0;
+    line-height: 35px;
+  }
+  &__input-wrapper {
+    margin:19px 35px 0;
+    position: relative;
+    label.error{
+      position: absolute;
+      bottom: -14px;
+      font-size: 12px;
+      left: 18px;
+      color: $red;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    color: #000;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    padding: 18px 15px;
+    border: 3px solid rgba($blue, .5);
+    @include transition(all .2s ease-out);
+    @include input-placeholder {
+      color: rgba(#000, .5);
+    }
+  }
+  &__descr{
+    font-weight: bold;
+    color: $darkgrey;
+    padding-top: 15px;
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #fff;
+    background: transparent;
+    border: 2px solid $blue;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @include transition(color .2s ease-out);
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      border-bottom: 2px solid #21acb1;
+      top: 0;
+      left: 0;
+      @include transition(all .2s ease-out);
+    }
+    &:before {
+      content: attr(data-content);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      line-height: 38px;
+    }
+    &:hover {
+      color: $blue;
+      &:after {
+        top: 100%;
+      }
+    }
+    &:active {
+      @include box-shadow(0 0 10px 0 rgba(darken($blue, 10%), .8) inset);
+    }
+  }
+}
+#callback-modal2{
+  .modal__wrapper{
+    height: 320px;
+    border: 4px solid $blue;
+  }
+  .modal__title{
+    font-size: 20px;
+    padding: 25px 0 10px;
+  }
+  .modal__label{
+    font-size: 16px;
+  }
+  .modal__input{
+    width: 220px;
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+    &::-webkit-input-placeholder {color:gray;}
+    &::-moz-placeholder          {color:gray;}/* Firefox 19+ */
+    &:-moz-placeholder           {color:gray;}/* Firefox 18- */
+    &:-ms-input-placeholder      {color:gray;}
+  }
+  .modal__button{
+    font-size: 16px;
+    width: 220px;
+  }
+  p{
+    text-align: center;
+  }
+}
+
+@import "modals.scss";
