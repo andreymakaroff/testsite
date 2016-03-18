@@ -27,6 +27,7 @@ if (array_key_exists('utm_source', $_GET)) {
   <link rel="stylesheet" href="css/owl.carousel.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="js/libs/slick/slick.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="js/libs/slick/slick-theme.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="js/libs/fancybox/jquery.fancybox.css" media="screen" title="no title" charset="utf-8">
   <script src="js/libs/jquery.min.js"></script>
   <script src="js/libs/jquery-ui/jquery-ui.min.js"></script>
   <script src="js/libs/maskedinput.min.js"></script>
@@ -562,8 +563,11 @@ if (array_key_exists('utm_source', $_GET)) {
         <p class="scr-vi__title">
           Подробный видео обзор нашей продукции
         </p>
-        <iframe class="scr-vi__videoframe" width="850" height="450" src="https://www.youtube.com/embed/TVuI2C340JY" frameborder="0"
-                allowfullscreen></iframe>
+        <a href="https://www.youtube.com/embed/TVuI2C340JY?autoplay=1" class="fancybox fancybox.iframe">
+          <img src="img/zagl.jpg" class="scr-vi__videoframe" alt="">
+        </a>
+<!--        <iframe class="scr-vi__videoframe" width="850" height="450" src="https://www.youtube.com/embed/TVuI2C340JY" frameborder="0"-->
+<!--                allowfullscreen></iframe>-->
       </div>
     </div>
   </section>
