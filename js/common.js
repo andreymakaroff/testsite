@@ -45,11 +45,11 @@ $(document).ready(function() {
   }
   var inputAuto = document.querySelector('.scr-iii__input[name="auto"]');
   if (inputAuto) {
-    $(inputAuto).on('keyup', function(e){
-      if (this.value.length>=3) $('.scr-iii__descr').show();
+    $(inputAuto).on('keyup', function (e) {
+      if (this.value.length >= 3) $('.scr-iii__descr').show();
       else $('.scr-iii__descr').hide();
     });
-
+  }
   //if($('')){
   //
   //  $('.scr-iii__descr').show();
