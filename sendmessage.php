@@ -2,8 +2,8 @@
 session_start();//
 $arr = $_POST;
 if (array_key_exists('phone', $arr)) {
-   $sendto = 'makarofff@ukr.net';
-//    $sendto = 'autoslon.com@yandex.ru';
+  // $sendto = 'makarofff@ukr.net';     //  >>> Указать нужный ящик!
+   $sendto = 'autoslon.com@yandex.ru';
   $sendtoIMS = 'client@imsmedia.net.ua';
   $from = 'Slon@mail.ru';
   $phone = $arr['phone'];
@@ -35,8 +35,9 @@ if (array_key_exists('phone', $arr)) {
     $msg .= "<p><strong>Кампания:</strong> ".$campaign."</p>\r\n";
   };
   $msg .= "</body></html>";
-//  if((mail($sendto, $subject, $msg, $headers))&&(mail($sendtoIMS, $subject, $msg, $headers))) {
-    if(mail($sendto, $subject, $msg, $headers)) {
+  include 'toBitrix24.inc.php';
+  if((mail($sendto, $subject, $msg, $headers))&&(mail($sendtoIMS, $subject, $msg, $headers))) {
+//    if(mail($sendto, $subject, $msg, $headers)) {
     header("HTTP/1.0 200 OK");
     echo '{"status":"success"}';
   } else {

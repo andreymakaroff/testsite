@@ -951,6 +951,7 @@ body{
     width: 100%;
     overflow: hidden;
     padding-bottom: 4vw;
+    background: linear-gradient(to bottom, #fff 0%, #fff 45%,$blue 50%, $blue 100%);
   }
   &__rotate{
     margin: 7% -20% 0 -20%;
