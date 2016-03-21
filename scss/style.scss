@@ -195,26 +195,15 @@ body{
     height: 40px;
     font-size: 22px;
     color: #fff;
-    background: transparent;
-    border: 1px solid $blue;
+    background: #ffa827;
+    border: none;
+    border-bottom: 4px solid #ed9114;
     cursor: pointer;
     text-align: center;
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
     @include transition(color .2s ease-out);
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: $blue;
-      border-bottom: 2px solid #21acb1;
-      top: 0;
-      left: 0;
-      @include transition(all .2s ease-out);
-    }
     &:before {
       content: attr(data-content);
       position: absolute;
@@ -227,13 +216,16 @@ body{
       line-height: 38px;
     }
     &:hover {
-      color: $blue;
-      &:after {
-        top: 100%;
-      }
+      border-bottom: 2px solid #ed9114;
+      top: 2px;
+      height: 38px;
+      margin-top: 2px;
+      margin-bottom: 7px;
     }
     &:active {
-      @include box-shadow(0 0 10px 0 rgba(darken($blue, 10%), .8) inset);
+      border-bottom:none;
+      border-top: 2px solid #ed9114;
+      //@include box-shadow(0 0 10px 0 rgba(darken($blue, 10%), .8) inset);
     }
   }
   &__fichesBox{
@@ -486,7 +478,7 @@ body{
   .item{
     overflow: hidden;
     img{
-      margin:-50px 0;
+      margin:0 0 -100px;
     }
   }
 }
