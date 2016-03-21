@@ -179,7 +179,6 @@ body{
     height: 40px;
     line-height: 38px;
     text-align: center;
-    padding: 18px 15px;
     border: 2px solid rgba($blue, .5);
     @include transition(all .2s ease-out);
     @include input-placeholder {
@@ -300,7 +299,7 @@ body{
       position: absolute;
       bottom: -3px;
       font-size: 12px;
-      left: 26px;
+      left: 14px;
       color: #fff;
     }
   }
@@ -313,7 +312,6 @@ body{
     color: #fff;
     height: 40px;
     line-height: 38px;
-    padding: 18px 15px;
     border: 2px solid #fff;
     -moz-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
@@ -693,7 +691,6 @@ body{
     border: 3px solid #fff;
     border-radius: 3px;
     outline: none;
-    padding: 18px 15px;
     @include transition(all .2s ease-out);
     @include input-placeholder {
       color: $darkgrey;
@@ -850,7 +847,6 @@ body{
     background: rgba(#000,.6);
     border: none;
     outline: none;
-    padding: 18px 15px;
     @include transition(all .2s ease-out);
     @include input-placeholder {
       color: #fff;
@@ -1098,7 +1094,6 @@ body{
     height: 40px;
     line-height: 38px;
     text-align: center;
-    padding: 18px 15px;
     border: 3px solid rgba($blue, .5);
     @include transition(all .2s ease-out);
     @include input-placeholder {
